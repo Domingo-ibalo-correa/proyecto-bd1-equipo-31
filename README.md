@@ -1,5 +1,7 @@
 # Grupo31 "La Frecuencia" 
+
 *ETAPA 1*
+
 Nombre de equipo: La Frecuencia
 
 Integrantes: 
