@@ -1,5 +1,8 @@
 # Grupo31 "La Frecuencia" 
+* Etapa 1
 
+ -[Información del proyecto](docs/etapa-1/etapa-1)
+ 
 * Etapa 2
   
   -[DER modelo entidad relacion](docs/etapa-2/Grupo%2031%20DER%20Etapa%202.png)
