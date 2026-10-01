@@ -99,3 +99,46 @@ SELECT * FROM numero_proveedor;
 SELECT * FROM correo_proveedor;
 SELECT * FROM Ingreso_vinilo;
 SELECT * FROM detalle_de_ingreso;
+
+-----------UPDATES-------------------------
+UPDATE Usuario
+SET nombre_usuario='juanito'
+
+
+UPDATE ciudad
+SET id_provincia=2
+
+UPDATE direccion
+SET id_ciudad=2
+
+UPDATE Proveedor
+SET id_direccion=2
+
+UPDATE numero_proveedor
+SET id_proveedor=2
+
+UPDATE correo_proveedor
+SET id_proveedor=2
+
+UPDATE Ingreso_vinilo
+SET id_proveedor=2
+
+UPDATE Compra
+SET id_usuario=2
+UPDATE Compra
+SET id_metodo=2
+
+UPDATE vinilo_personalizado
+SET id_genero=2
+UPDATE vinilo_personalizado
+SET id_color = 2
+
+UPDATE detalle_de_ingreso
+SET id_lote=2
+UPDATE detalle_de_ingreso
+SET id_vinilo=2
+
+UPDATE Detalle_compra
+SET id_compra=2
+UPDATE Detalle_compra
+SET id_vinilo=2
