@@ -1,6 +1,6 @@
-# Grupo31 "La Frecuencia" 
+# Grupo31 <img width="197" height="38" alt="22b84c559c89ff7ef319173dbdab40fb" src="https://github.com/user-attachments/assets/370a16b9-f59c-4ff5-9e2c-3342d84b9e4d" />
 
-<img width="512" height="512" alt="disco_vinilo_gif" src="https://github.com/user-attachments/assets/c9bd03f5-8546-4938-86c1-facd43aaa16b" />
+<img width="400" height="400" alt="disco_vinilo_gif" src="https://github.com/user-attachments/assets/c9bd03f5-8546-4938-86c1-facd43aaa16b" />
 
 * Etapa 1
 
