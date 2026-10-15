@@ -1,3 +1,5 @@
+CREATE DATABASE proyecto_grupo31_secuela
+
 use proyecto_grupo31_secuela
 ---------------------tablas padre-------------------------------------
 --tabla usuario--
@@ -24,6 +26,7 @@ CREATE TABLE Vinilo
   stock_minimo INT NOT NULL,
   stock_actual INT NOT NULL,
   titulo_Vinilo VARCHAR(100) NOT NULL,
+  tipo_vinilo VARCHAR(20) DEFAULT 'Normal' NOT NULL,
   CONSTRAINT PK_ID_VINILO PRIMARY KEY (id_vinilo)
 );
 
@@ -64,7 +67,9 @@ CREATE TABLE direccion
 (
   id_direccion INT IDENTITY (1,1) NOT NULL,
   calle_direccion VARCHAR(50) NOT NULL,
-  altura_direccion INT NOT NULL,
+  altura_direccion INT  NULL,
+  piso_direccion VARCHAR(20) NULL,
+  departamento_direccion VARCHAR(20) NULL,
   id_ciudad INT NOT NULL,
   CONSTRAINT PK_ID_DIRECCION PRIMARY KEY (id_direccion),
   CONSTRAINT FK_ID_DIRECCION FOREIGN KEY (id_ciudad) REFERENCES ciudad(id_ciudad)
