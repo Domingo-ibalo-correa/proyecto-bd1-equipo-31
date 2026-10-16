@@ -1,0 +1,7 @@
+El alcance del proyecto
+
+Nuestro alcance pensado para esta propuesta de innovar el negocio es que tomaremos encuenta los problemas a resolver o lo de mayor importancia que son la gestión de stock, las compras y los clientes entonces pensamos que el abarque en:
+La Gestión de Stock y Catálogo: empezaría en la organización y publicación de vinilos con descripciones detalladas, el control de inventario con las actualizaciones del stock en tiempo real y los informes del estado de stock para asi nos pueda avisar cuando nos estamos quedando sin stock de algún vinilo o que estén próximos a agotarse.
+El Módulo de Proveedores y el Abastecimiento: abarcaremos el registro y administración de múltiples proveedores asi los vinilos pueden ser suministrados por varios proveedores, el registro de ingresos de mercadería con los detalles de que proveedor lo suministro su precio y su cantidad.
+El Módulo de Clientes: que se encargara de lo que sería la gestión de los usuarios incluyendo el registro, la creación de cuentas y su administración de perfil.
+El Módulo de Ventas y Finanzas: que se basara en la administración de las opciones de métodos de pagos online y el registro de compras y facturación de cada cliente.
