@@ -55,24 +55,55 @@ Administración de métodos de pago online, registro de compras y facturación d
 
 ### Etapa 1 · Requerimientos y dominio del negocio
 
-📄 [Ver información completa del proyecto](docs/etapa-1/etapa-1)
-
-Descripción del caso, alcance del sistema y reglas de negocio.
+| Entregable | Archivo |
+| :--- | :--- |
+| 📄 Información completa de la etapa | [etapa-01.md](docs/etapa-01/etapa-01.md) |
+| 🏪 Descripción del caso | [descripcion-caso.md](docs/etapa-01/descripcion-caso.md) |
+| 🎯 Alcance del sistema | [alcance.md](docs/etapa-01/alcance.md) |
+| 📏 Reglas de negocio | [reglas-negocio.md](docs/etapa-01/reglas-negocio.md) |
+| 📑 Entrega en PDF | [equipo31_etapa_1.pdf](docs/etapa-01/equipo31_etapa_1.pdf) |
 
 ### Etapa 2 · Modelado de datos
 
 | Entregable | Archivo |
 | :--- | :--- |
-| 🧩 Diagrama Entidad-Relación (DER) | [Ver DER](docs/etapa-2/Grupo%2031%20DER%20Etapa%202.png) |
-| 🗃️ Modelo relacional sin normalizar | [Ver modelo](docs/etapa-2/Modelo%20relacional%20grupo%2031%20sin%20normalizaci%C3%B3n.png) |
-| ✅ Modelo normalizado | [Ver normalización](docs/etapa-2/Punto3Etapa2_TablaNormalizada.png) |
+| 🧩 Diagrama Entidad-Relación (DER) | [Ver DER](docs/etapa-02/der/DER.png) |
+| 🗃️ Modelo relacional sin normalizar | [Ver modelo](docs/etapa-02/ModeloRelacionalSinNormalizaci%C3%B3n.png) |
+| ✅ Modelo normalizado | [Ver tablas normalizadas](docs/etapa-02/TablaNormalizada.png) |
+| 📝 Proceso de normalización | [normalizacion.md](docs/etapa-02/normalizacion.md) |
 
+### Etapa 3 · Implementación en SQL Server
 
-<div align="center">
+La base de datos se llama `proyecto_grupo31_secuela` y tiene 17 tablas. Para armarla hay que ejecutar los scripts en este orden, sobre una base vacía:
 
+1. [`sql/ddl/crear_bd.sql`](sql/ddl/crear_bd.sql): crea la base, las tablas y las restricciones.
+2. [`sql/dml/datos_prueba.sql`](sql/dml/datos_prueba.sql): carga los datos de prueba, con las verificaciones, los UPDATE y DELETE de ejemplo y las pruebas de restricciones.
 
-</div>
+| Entregable | Archivo |
+| :--- | :--- |
+| 🛠️ Cómo se implementó (del modelo a las tablas) | [implementacion.md](docs/etapa-03/implementacion.md) |
+| 🔒 Restricciones de integridad (PK, FK, UNIQUE, CHECK) | [restricciones-integridad.md](docs/etapa-03/restricciones-integridad.md) |
+| 🧪 Pruebas de validación | [pruebas-validacion.md](docs/etapa-03/pruebas-validacion.md) |
+| 🗺️ Diagrama de la base creada | [DiagramaDDL.png](docs/etapa-03/DiagramaDDL.png) |
+| 📸 Capturas de las pruebas | [casos-de-prueba/](docs/etapa-03/casos-de-prueba) |
 
+---
+
+## Estructura del repositorio
+
+```
+docs/
+  etapa-01/   requerimientos y reglas de negocio
+  etapa-02/   DER, modelo relacional y normalización
+  etapa-03/   implementación, restricciones y pruebas
+  etapa-04/
+  etapa-05/
+sql/
+  ddl/        creación de la base y las tablas
+  dml/        datos de prueba
+  consultas/  consultas de la Etapa 4
+  tecnico/    procedimientos, funciones, triggers, transacciones, índices y seguridad (Etapa 5)
+```
 
 ---
 
