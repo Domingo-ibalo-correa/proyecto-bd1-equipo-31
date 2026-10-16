@@ -84,7 +84,7 @@ La base de datos se llama `proyecto_grupo31_secuela` y tiene 17 tablas. Para arm
 | 🛠️ Cómo se implementó (del modelo a las tablas) | [implementacion.md](docs/etapa-03/implementacion.md) |
 | 🔒 Restricciones de integridad (PK, FK, UNIQUE, CHECK) | [restricciones-integridad.md](docs/etapa-03/restricciones-integridad.md) |
 | 🧪 Pruebas de validación | [pruebas-validacion.md](docs/etapa-03/pruebas-validacion.md) |
-| 🗺️ Diagrama de la base creada | [DiagramaDDL.png](docs/etapa-03/DiagramaDDL.png) |
+| 🗺️ Diagrama de la base creada | [DiagramaDDL.png](docs/etapa-03/diagrama-ddl.png) |
 | 📸 Capturas de las pruebas | [casos-de-prueba/](docs/etapa-03/casos-de-prueba) |
 
 ---
