@@ -1,10 +1,20 @@
+﻿-- =====================================================================
+-- La Frecuencia - Grupo 31 - Bases de Datos I
+-- ETAPA III - DML (SQL Server): datos de prueba
+-- =====================================================================
+-- Hay entre 8 y 10 registros en cada tabla (salvo las de detalle, que tienen mas).
+-- Correr DESPUES de crear_bd.sql y sobre una base recien creada: los id vienen del IDENTITY
+-- y las FK de abajo usan esos numeros (1, 2, 3...).
+-- Si ya se corrio antes: DROP DATABASE proyecto_grupo31_secuela y volver a correr el DDL.
+-- Los datos son ficticios (los correos son @example.com).
+-- =====================================================================
 use proyecto_grupo31_secuela
 GO
 
 --------------------------------------------------------------------------------
 -- INSERTS TABLAS INDEPENDIENTES osea las Padres
 --------------------------------------------------------------------------------
--- Usuarios
+-- Usuario (10)
 INSERT INTO Usuario (nombre_usuario, correo_usuario, contraseña_usuario) VALUES
   ('lucia.gomez', 'lucia.gomez@example.com', 'clave_lg26'),
   ('martin.fernandez', 'martin.fernandez@example.com', 'clave_mf26'),
@@ -17,7 +27,7 @@ INSERT INTO Usuario (nombre_usuario, correo_usuario, contraseña_usuario) VALUES
   ('agustina.molina', 'agustina.molina@example.com', 'clave_am26'),
   ('tomas.villalba', 'tomas.villalba@example.com', 'clave_tv26');
 
--- Metodos de Pago
+-- Metodo de Pago (8)
 INSERT INTO Metodo_pago (nombre_Metodo_pago) VALUES
   ('Efectivo'),
   ('Transferencia bancaria'),
@@ -28,7 +38,7 @@ INSERT INTO Metodo_pago (nombre_Metodo_pago) VALUES
   ('MODO'),
   ('Cuenta DNI');
 
--- Generos
+-- Genero (10)
 INSERT INTO genero (nombre_genero) VALUES
   ('Rock nacional'),
   ('Rock internacional'),
@@ -41,7 +51,7 @@ INSERT INTO genero (nombre_genero) VALUES
   ('Funk y Soul'),
   ('Musica clasica');
 
--- Colores
+-- Color (10)
 INSERT INTO color (nombre_color) VALUES
   ('Negro'),
   ('Rojo'),
@@ -54,7 +64,7 @@ INSERT INTO color (nombre_color) VALUES
   ('Naranja'),
   ('Rosa');
 
--- Provincias
+-- Provincia (10)
 INSERT INTO provincia (nombre_provincia) VALUES
   ('Corrientes'),
   ('Chaco'),
@@ -68,34 +78,35 @@ INSERT INTO provincia (nombre_provincia) VALUES
   ('Mendoza');
 
 -- Vinilo (18: los 10 primeros son normales y del 11 al 18 son personalizados)
+-- id_genero: el vinilo normal tiene UN genero (1 Rock nacional, 2 Rock internacional, 3 Jazz, 5 Folklore, 6 Tango, 7 Pop, 8 Reggae).
+-- El personalizado (11 al 18) lleva NULL: sus generos estan en genero_multiple.
 -- stock_actual = lo que ingreso por proveedores menos lo vendido en compras 'realizado'.
--- Una compra 'pendiente' (RN.05) no descuenta stock hasta que se confirma 
-
+-- Una compra 'pendiente' (RN.05) no descuenta stock hasta que se confirma (ver UPDATE de abajo).
 -- Quedan con stock por debajo del minimo: Spinetta, Mercedes Sosa y Piazzolla (para probar el aviso de stock bajo).
-INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo, tipo_vinilo) VALUES
-  ('Charly Garcia', 5, 32, 'Clics Modernos', 'Normal'),
-  ('Soda Stereo', 5, 26, 'Dynamo', 'Normal'),
-  ('Luis Alberto Spinetta', 5, 4, 'Artaud', 'Normal'),
-  ('Mercedes Sosa', 8, 7, 'Gracias a la vida', 'Normal'),
-  ('Astor Piazzolla', 6, 5, 'Libertango', 'Normal'),
-  ('Miles Davis', 5, 20, 'Kind of Blue', 'Normal'),
-  ('Pink Floyd', 6, 32, 'The Dark Side of the Moon', 'Normal'),
-  ('Bob Marley and The Wailers', 4, 17, 'Exodus', 'Normal'),
-  ('Fito Paez', 5, 26, 'El amor despues del amor', 'Normal'),
-  ('Andres Calamaro', 4, 19, 'Alta suciedad', 'Normal'),
-  ('Gustavo Cerati', 2, 2, 'Bocanada (edicion personalizada)', 'Personalizado'),
-  ('Soda Stereo', 2, 2, 'Dynamo (edicion personalizada)', 'Personalizado'),
-  ('Mercedes Sosa', 2, 2, 'Gracias a la vida (edicion personalizada)', 'Personalizado'),
-  ('Pink Floyd', 2, 2, 'The Dark Side of the Moon (edicion personalizada)', 'Personalizado'),
-  ('Miles Davis', 2, 2, 'Kind of Blue (edicion personalizada)', 'Personalizado'),
-  ('Bob Marley and The Wailers', 2, 2, 'Exodus (edicion personalizada)', 'Personalizado'),
-  ('Astor Piazzolla', 2, 3, 'Libertango (edicion personalizada)', 'Personalizado'),
-  ('Fito Paez', 2, 3, 'El amor despues del amor (edicion personalizada)', 'Personalizado');
+INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo, tipo_vinilo, id_genero) VALUES
+  ('Charly Garcia', 5, 32, 'Clics Modernos', 'Normal', 1),
+  ('Soda Stereo', 5, 26, 'Dynamo', 'Normal', 1),
+  ('Luis Alberto Spinetta', 5, 4, 'Artaud', 'Normal', 1),
+  ('Mercedes Sosa', 8, 7, 'Gracias a la vida', 'Normal', 5),
+  ('Astor Piazzolla', 6, 5, 'Libertango', 'Normal', 6),
+  ('Miles Davis', 5, 20, 'Kind of Blue', 'Normal', 3),
+  ('Pink Floyd', 6, 32, 'The Dark Side of the Moon', 'Normal', 2),
+  ('Bob Marley and The Wailers', 4, 17, 'Exodus', 'Normal', 8),
+  ('Fito Paez', 5, 26, 'El amor despues del amor', 'Normal', 7),
+  ('Andres Calamaro', 4, 19, 'Alta suciedad', 'Normal', 1),
+  ('Gustavo Cerati', 2, 2, 'Bocanada (edicion personalizada)', 'Personalizado', NULL),
+  ('Soda Stereo', 2, 2, 'Dynamo (edicion personalizada)', 'Personalizado', NULL),
+  ('Mercedes Sosa', 2, 2, 'Gracias a la vida (edicion personalizada)', 'Personalizado', NULL),
+  ('Pink Floyd', 2, 2, 'The Dark Side of the Moon (edicion personalizada)', 'Personalizado', NULL),
+  ('Miles Davis', 2, 2, 'Kind of Blue (edicion personalizada)', 'Personalizado', NULL),
+  ('Bob Marley and The Wailers', 2, 2, 'Exodus (edicion personalizada)', 'Personalizado', NULL),
+  ('Astor Piazzolla', 2, 3, 'Libertango (edicion personalizada)', 'Personalizado', NULL),
+  ('Fito Paez', 2, 3, 'El amor despues del amor (edicion personalizada)', 'Personalizado', NULL);
 
 --------------------------------------------------------------------------------
 -- INSERTS TABLAS DEPENDIENTES INTERMEDIAS
 --------------------------------------------------------------------------------
--- Ciudades
+-- Ciudad (10)
 INSERT INTO ciudad (nombre_ciudad, id_provincia) VALUES
   ('Corrientes Capital', 1),
   ('Resistencia', 2),
@@ -108,7 +119,7 @@ INSERT INTO ciudad (nombre_ciudad, id_provincia) VALUES
   ('San Miguel de Tucuman', 9),
   ('Mendoza Capital', 10);
 
--- Direcciones - piso, departamento y altura pueden ser NULL
+-- Direccion (10) - piso, departamento y altura pueden ser NULL
 INSERT INTO direccion (calle_direccion, altura_direccion, piso_direccion, departamento_direccion, id_ciudad) VALUES
   ('Junin', 1120, NULL, NULL, 1),
   ('Av. 9 de Julio', 1500, NULL, NULL, 2),
@@ -121,7 +132,7 @@ INSERT INTO direccion (calle_direccion, altura_direccion, piso_direccion, depart
   ('Munecas', 430, NULL, NULL, 9),
   ('Ruta Nacional 40 km 3', NULL, NULL, NULL, 10);
 
--- Proveedores - el proveedor N usa la direccion N
+-- Proveedor (10) - el proveedor N usa la direccion N
 INSERT INTO Proveedor (nombre_Proveedor, id_direccion) VALUES
   ('Discos del Litoral', 1),
   ('Vinilos del Chaco', 2),
@@ -137,7 +148,7 @@ INSERT INTO Proveedor (nombre_Proveedor, id_direccion) VALUES
 --------------------------------------------------------------------------------
 -- INSERTS TABLAS DEPENDIENTES DE COMPRAS Y PROVEEDORES
 --------------------------------------------------------------------------------
--- Ingreso_vinilo - 10 lotes osea uno por proveedor
+-- Ingreso_vinilo (10 lotes, uno por proveedor)
 INSERT INTO Ingreso_vinilo (fecha, comprobante, id_proveedor) VALUES
   ('2026-06-05', '0001-00004501', 1),
   ('2026-06-19', '0001-00004502', 2),
@@ -150,7 +161,7 @@ INSERT INTO Ingreso_vinilo (fecha, comprobante, id_proveedor) VALUES
   ('2026-09-04', '0002-00006120', 9),
   ('2026-09-18', '0001-00009047', 10);
 
--- Compra - 12, 10 realizadas, 1 pendiente y 1 cancelada
+-- Compra (12: 10 realizadas, 1 pendiente y 1 cancelada)
 INSERT INTO Compra (estado_de_compra, fecha_compra, id_usuario, id_metodo) VALUES
   ('realizado', '2026-08-12', 1, 2),
   ('realizado', '2026-08-19', 2, 4),
@@ -165,7 +176,7 @@ INSERT INTO Compra (estado_de_compra, fecha_compra, id_usuario, id_metodo) VALUE
   ('pendiente', '2026-10-12', 9, 8),
   ('cancelado', '2026-10-08', 10, 4);
 
--- Telefonos del Proveedor - 12 algunos proveedores tienen dos telefonos
+-- Telefonos del Proveedor (12, algunos proveedores tienen dos)
 INSERT INTO numero_proveedor (codigo_area, numero_proveedor, id_proveedor) VALUES
   (379, 4456120, 1),
   (379, 4456121, 1),
@@ -180,7 +191,7 @@ INSERT INTO numero_proveedor (codigo_area, numero_proveedor, id_proveedor) VALUE
   (381, 4311940, 9),
   (261, 4298350, 10);
 
--- Correos del Proveedor
+-- Correos del Proveedor (12)
 INSERT INTO correo_proveedor (correo, id_proveedor) VALUES
   ('ventas@discosdellitoral.example.com', 1),
   ('compras@discosdellitoral.example.com', 1),
@@ -199,15 +210,34 @@ INSERT INTO correo_proveedor (correo, id_proveedor) VALUES
 -- INSERTS TABLAS DE DETALLES
 --------------------------------------------------------------------------------
 -- vinilo_personalizado (8)
-INSERT INTO vinilo_personalizado (id_vinilo, descripcion_vinilo_personalizado, id_genero, id_color) VALUES
-  (11, 'Tapa con foto familiar y dedicatoria', 1, 2),
-  (12, 'Etiqueta central con el nombre del cliente', 1, 3),
-  (13, 'Dedicatoria grabada en la contratapa', 5, 1),
-  (14, 'Sobre interno con letras impresas', 2, 6),
-  (15, 'Edicion de regalo con estuche', 3, 3),
-  (16, 'Tapa con ilustracion a pedido', 8, 4),
-  (17, 'Dedicatoria y fecha de aniversario', 6, 8),
-  (18, 'Vinilo color rosa con etiqueta grabada', 1, 10);
+INSERT INTO vinilo_personalizado (id_vinilo, descripcion_vinilo_personalizado, id_color) VALUES
+  (11, 'Tapa con foto familiar y dedicatoria', 2),
+  (12, 'Etiqueta central con el nombre del cliente', 3),
+  (13, 'Dedicatoria grabada en la contratapa', 1),
+  (14, 'Sobre interno con letras impresas', 6),
+  (15, 'Edicion de regalo con estuche', 3),
+  (16, 'Tapa con ilustracion a pedido', 4),
+  (17, 'Dedicatoria y fecha de aniversario', 8),
+  (18, 'Vinilo color rosa con etiqueta grabada', 10);
+
+-- genero_multiple (16): cada vinilo personalizado abarca 2 generos (RN.03). Solo se puede cargar para vinilos personalizados.
+INSERT INTO genero_multiple (id_vinilo, id_genero) VALUES
+  (11, 1),
+  (11, 7),
+  (12, 1),
+  (12, 7),
+  (13, 5),
+  (13, 6),
+  (14, 2),
+  (14, 4),
+  (15, 3),
+  (15, 4),
+  (16, 8),
+  (16, 9),
+  (17, 6),
+  (17, 10),
+  (18, 1),
+  (18, 7);
 
 -- detalle_de_ingreso (32 renglones). Algunos vinilos entran por mas de un proveedor (RN.02)
 -- precio_unitario = lo que paga la tienda al proveedor
@@ -290,6 +320,7 @@ SELECT * FROM genero;
 SELECT * FROM color;
 SELECT * FROM Vinilo;
 SELECT * FROM vinilo_personalizado;
+SELECT * FROM genero_multiple;
 
 -------- Proveedores y Ubicacion --------
 SELECT * FROM provincia;
@@ -313,6 +344,7 @@ UNION ALL SELECT 'direccion', COUNT(*) FROM direccion
 UNION ALL SELECT 'Compra', COUNT(*) FROM Compra
 UNION ALL SELECT 'Detalle_compra', COUNT(*) FROM Detalle_compra
 UNION ALL SELECT 'vinilo_personalizado', COUNT(*) FROM vinilo_personalizado
+UNION ALL SELECT 'genero_multiple', COUNT(*) FROM genero_multiple
 UNION ALL SELECT 'Proveedor', COUNT(*) FROM Proveedor
 UNION ALL SELECT 'Ingreso_vinilo', COUNT(*) FROM Ingreso_vinilo
 UNION ALL SELECT 'detalle_de_ingreso', COUNT(*) FROM detalle_de_ingreso
@@ -320,7 +352,7 @@ UNION ALL SELECT 'numero_proveedor', COUNT(*) FROM numero_proveedor
 UNION ALL SELECT 'correo_proveedor', COUNT(*) FROM correo_proveedor;
 
 -----------UPDATES-------------------------
--- Cada UPDATE lleva su WHERE, sin WHERE se modifican todas las filas de la tabla
+-- Cada UPDATE lleva su WHERE: sin WHERE se modifican TODAS las filas de la tabla.
 -- Cada uno modifica exactamente 1 registro.
 
 -- se corrige un error de tipeo en el nombre de usuario
@@ -374,11 +406,15 @@ WHERE nombre_provincia = 'Santa Cruz';
 DELETE FROM color
 WHERE nombre_color = 'Dorado';
 
--- 2) se borra un telefono de un proveedor
+-- 2) un cliente le saca un genero a su vinilo personalizado (el Pink Floyd personalizado deja de ser Blues)
+DELETE FROM genero_multiple
+WHERE id_vinilo = 14 AND id_genero = 4;
+
+-- 3) se borra un telefono de un proveedor
 DELETE FROM numero_proveedor
 WHERE codigo_area = 379 AND numero_proveedor = 4456121 AND id_proveedor = 1;
 
--- 3) prueba del ON DELETE CASCADE: al borrar el proveedor se borran solos sus telefonos y correos
+-- 4) prueba del ON DELETE CASCADE: al borrar el proveedor se borran solos sus telefonos y correos
 INSERT INTO direccion (calle_direccion, altura_direccion, id_ciudad) VALUES ('Calle de prueba', 100, 1);
 INSERT INTO Proveedor (nombre_Proveedor, id_direccion) VALUES ('Proveedor de prueba', 11);
 INSERT INTO numero_proveedor (codigo_area, numero_proveedor, id_proveedor) VALUES (379, 4000000, 11);
@@ -390,15 +426,21 @@ WHERE id_proveedor = 11;
 DELETE FROM direccion
 WHERE id_direccion = 11;
 
--- Estos dos tienen que fallar (se dejan comentados): son las pruebas de las reglas de borrado
+-- Estos dos tienen que FALLAR (se dejan comentados): son las pruebas de las reglas de borrado
 -- DELETE FROM Usuario WHERE id_usuario = 1;  -- error: el usuario tiene compras (ON DELETE NO ACTION, RN.06)
 -- DELETE FROM Vinilo WHERE id_vinilo = 1;    -- error: el vinilo tiene ventas e ingresos asociados
+-- DELETE FROM genero WHERE id_genero = 1;    -- error: hay vinilos con ese genero
 
--------- Pruebas de las restricciones: cada INSERT de abajo tiene que dar ERROR (ir descomentando de a uno) --------
+-------- Pruebas de las restricciones: cada INSERT de abajo tiene que dar ERROR (descomentar de a uno) --------
 -- INSERT INTO Usuario (nombre_usuario, correo_usuario, contraseña_usuario) VALUES ('otro', 'lucia.gomez@example.com', 'clave1234');   -- UNIQUE: correo repetido
 -- INSERT INTO Usuario (nombre_usuario, correo_usuario, contraseña_usuario) VALUES ('otro', 'correo-sin-arroba', 'clave1234');          -- CHECK: formato de correo
--- INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo) VALUES ('X', 1, -5, 'Y');                             -- CHECK: stock negativo
--- INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo, tipo_vinilo) VALUES ('X', 1, 1, 'Y', 'Raro');         -- CHECK: tipo invalido
+-- INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo, id_genero) VALUES ('X', 1, -5, 'Y', 1);                -- CHECK: stock negativo
+-- INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo, tipo_vinilo, id_genero) VALUES ('X', 1, 1, 'Y', 'Raro', 1);  -- CHECK: tipo invalido
+-- INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo, id_genero) VALUES ('X', 1, 1, 'Y', 99);                -- FK: genero inexistente
+-- INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo) VALUES ('X', 1, 1, 'Y');                                -- CHECK: un vinilo normal tiene que tener genero
+-- INSERT INTO Vinilo (artista_Vinilo, stock_minimo, stock_actual, titulo_Vinilo, tipo_vinilo, id_genero) VALUES ('X', 1, 1, 'Y', 'Personalizado', 1);  -- CHECK: el personalizado no lleva genero en Vinilo (van en genero_multiple)
+-- INSERT INTO genero_multiple (id_vinilo, id_genero) VALUES (1, 2);                                                                      -- FK: un vinilo NORMAL no puede tener varios generos
+-- INSERT INTO genero_multiple (id_vinilo, id_genero) VALUES (11, 1);                                                                     -- PK: ese genero ya esta cargado para ese vinilo
 -- INSERT INTO Compra (estado_de_compra, fecha_compra, id_usuario, id_metodo) VALUES ('enviado', '2026-10-15', 1, 1);                   -- CHECK: estado invalido
 -- INSERT INTO Detalle_compra (precio_unidad, cantidad, id_compra, id_vinilo) VALUES (1000, 0, 12, 1);                                  -- CHECK: cantidad 0
 -- INSERT INTO Compra (estado_de_compra, fecha_compra, id_usuario, id_metodo) VALUES ('pendiente', '2026-10-15', 99, 1);               -- FK: usuario inexistente
