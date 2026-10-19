@@ -81,11 +81,23 @@ La base de datos se llama `proyecto_grupo31_secuela` y tiene 17 tablas. Para arm
 
 | Entregable | Archivo |
 | :--- | :--- |
-| 🛠️ Cómo se implementó (del modelo a las tablas) | [implementacion.md](docs/etapa-03/implementacion.md) |
+| 🛠️ Cómo se implementó (del modelo a las tablas) | [implementacion.md](docs/etapa-03/implementaci%C3%B3n.md) |
 | 🔒 Restricciones de integridad (PK, FK, UNIQUE, CHECK) | [restricciones-integridad.md](docs/etapa-03/restricciones-integridad.md) |
 | 🧪 Pruebas de validación | [pruebas-validacion.md](docs/etapa-03/pruebas-validacion.md) |
 | 🗺️ Diagrama de la base creada | [diagrama-ddl.png](docs/etapa-03/diagrama-ddl.png) |
 | 📸 Capturas de las pruebas | [casos-de-prueba/](docs/etapa-03/casos-de-prueba) |
+
+### Etapa 4 · Consultas y casos de uso
+
+Las consultas están en `sql/consultas/` y se ejecutan sobre la base ya creada y cargada (Etapa 3). Cada una tiene su archivo explicativo en `docs/etapa-04/`, con el código, la explicación y el resultado esperado.
+
+| Consulta | Script SQL | Documento |
+| :--- | :--- | :--- |
+| 🧾 Comprobante de venta (encabezado, detalle, subtotales y total) | [comprobante_venta.sql](sql/consultas/comprobante_venta.sql) | [comprobante-venta.md](docs/etapa-04/comprobante-venta.md) |
+| 📊 Informe de ventas por género y por método de pago en un rango de fechas | [informe_ventas.sql](sql/consultas/informe_ventas.sql) | [informe-ventas.md](docs/etapa-04/informe-ventas.md) |
+| 🔎 Consulta avanzada (mejores clientes y vinilos a reponer) | [consulta_avanzada.sql](sql/consultas/consulta_avanzada.sql) | [consulta-avanzada.md](docs/etapa-04/consulta-avanzada.md) |
+
+Además, [casos-uso.md](docs/etapa-04/casos-uso.md) explica quién usaría cada consulta y qué necesidad resuelve.
 
 ---
 
@@ -96,12 +108,12 @@ docs/
   etapa-01/   requerimientos y reglas de negocio
   etapa-02/   DER, modelo relacional y normalización
   etapa-03/   implementación, restricciones y pruebas
-  etapa-04/
+  etapa-04/   casos de uso y explicación de las consultas
   etapa-05/
 sql/
   ddl/        creación de la base y las tablas
   dml/        datos de prueba
-  consultas/  consultas de la Etapa 4
+  consultas/  consultas de la Etapa 4 (comprobante, informe y consultas avanzadas)
   tecnico/    procedimientos, funciones, triggers, transacciones, índices y seguridad (Etapa 5)
 ```
 
