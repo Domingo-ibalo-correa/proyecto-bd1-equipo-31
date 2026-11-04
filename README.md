@@ -17,7 +17,7 @@
 
 ---
 
-## 💿 Sobre el proyecto
+## Sobre el proyecto
 
 **La Frecuencia** es un emprendimiento dedicado a la **venta minorista de discos de vinilo a través de una plataforma digital**. A diferencia de una tienda física tradicional, el canal online permite que clientes de distintas zonas exploren y compren música con mucha más flexibilidad.
 
@@ -57,20 +57,20 @@ Administración de métodos de pago online, registro de compras y facturación d
 
 | Entregable | Archivo |
 | :--- | :--- |
-| 📄 Información completa de la etapa | [etapa-01.md](docs/etapa-01/etapa-01.md) |
-| 🏪 Descripción del caso | [descripcion-caso.md](docs/etapa-01/descripcion-caso.md) |
-| 🎯 Alcance del sistema | [alcance.md](docs/etapa-01/alcance.md) |
-| 📏 Reglas de negocio | [reglas-negocio.md](docs/etapa-01/reglas-negocio.md) |
-| 📑 Entrega en PDF | [equipo31_etapa_1.pdf](docs/etapa-01/equipo31_etapa_1.pdf) |
+| Información completa de la etapa | [etapa-01.md](docs/etapa-01/etapa-01.md) |
+| Descripción del caso | [descripcion-caso.md](docs/etapa-01/descripcion-caso.md) |
+| Alcance del sistema | [alcance.md](docs/etapa-01/alcance.md) |
+| Reglas de negocio | [reglas-negocio.md](docs/etapa-01/reglas-negocio.md) |
+| Entrega en PDF | [equipo31_etapa_1.pdf](docs/etapa-01/equipo31_etapa_1.pdf) |
 
 ### Etapa 2 · Modelado de datos
 
 | Entregable | Archivo |
 | :--- | :--- |
-| 🧩 Diagrama Entidad-Relación (DER) | [Ver DER](docs/etapa-02/der/DER.png) |
-| 🗃️ Modelo relacional sin normalizar | [Ver modelo](docs/etapa-02/ModeloRelacionalSinNormalizaci%C3%B3n.png) |
-| ✅ Modelo normalizado | [Ver tablas normalizadas](docs/etapa-02/TablaNormalizada.png) |
-| 📝 Proceso de normalización | [normalizacion.md](docs/etapa-02/normalizacion.md) |
+| Diagrama Entidad-Relación (DER) | [Ver DER](docs/etapa-02/der/DER.png) |
+| Modelo relacional sin normalizar | [Ver modelo](docs/etapa-02/ModeloRelacionalSinNormalizaci%C3%B3n.png) |
+| Modelo normalizado | [Ver tablas normalizadas](docs/etapa-02/TablaNormalizada.png) |
+| Proceso de normalización | [normalizacion.md](docs/etapa-02/normalizacion.md) |
 
 ### Etapa 3 · Implementación en SQL Server
 
@@ -81,11 +81,11 @@ La base de datos se llama `proyecto_grupo31_secuela` y tiene 17 tablas. Para arm
 
 | Entregable | Archivo |
 | :--- | :--- |
-| 🛠️ Cómo se implementó (del modelo a las tablas) | [implementacion.md](docs/etapa-03/implementaci%C3%B3n.md) |
-| 🔒 Restricciones de integridad (PK, FK, UNIQUE, CHECK) | [restricciones-integridad.md](docs/etapa-03/restricciones-integridad.md) |
-| 🧪 Pruebas de validación | [pruebas-validacion.md](docs/etapa-03/pruebas-validacion.md) |
-| 🗺️ Diagrama de la base creada | [diagrama-ddl.png](docs/etapa-03/diagrama-ddl.png) |
-| 📸 Capturas de las pruebas | [casos-de-prueba/](docs/etapa-03/casos-de-prueba) |
+| Cómo se implementó (del modelo a las tablas) | [implementacion.md](docs/etapa-03/implementaci%C3%B3n.md) |
+| Restricciones de integridad (PK, FK, UNIQUE, CHECK) | [restricciones-integridad.md](docs/etapa-03/restricciones-integridad.md) |
+| Pruebas de validación | [pruebas-validacion.md](docs/etapa-03/pruebas-validacion.md) |
+| Diagrama de la base creada | [diagrama-ddl.png](docs/etapa-03/diagrama-ddl.png) |
+| Capturas de las pruebas | [casos-de-prueba/](docs/etapa-03/casos-de-prueba) |
 
 ### Etapa 4 · Consultas y casos de uso
 
@@ -93,11 +93,26 @@ Las consultas están en `sql/consultas/` y se ejecutan sobre la base ya creada y
 
 | Consulta | Script SQL | Documento |
 | :--- | :--- | :--- |
-| 🧾 Comprobante de venta (encabezado, detalle, subtotales y total) | [comprobante_venta.sql](sql/consultas/comprobante_venta.sql) | [comprobante-venta.md](docs/etapa-04/comprobante-venta.md) |
-| 📊 Informe de ventas por género y por método de pago en un rango de fechas | [informe_ventas.sql](sql/consultas/informe_ventas.sql) | [informe-ventas.md](docs/etapa-04/informe-ventas.md) |
-| 🔎 Consulta avanzada (mejores clientes y vinilos a reponer) | [consulta_avanzada.sql](sql/consultas/consulta_avanzada.sql) | [consulta-avanzada.md](docs/etapa-04/consulta-avanzada.md) |
+| Comprobante de venta (encabezado, detalle, subtotales y total) | [comprobante_venta.sql](sql/consultas/comprobante_venta.sql) | [comprobante-venta.md](docs/etapa-04/comprobante-venta.md) |
+| Informe de ventas por género y por método de pago en un rango de fechas | [informe_ventas.sql](sql/consultas/informe_ventas.sql) | [informe-ventas.md](docs/etapa-04/informe-ventas.md) |
+| Consulta avanzada (mejores clientes y vinilos a reponer) | [consulta_avanzada.sql](sql/consultas/consulta_avanzada.sql) | [consulta-avanzada.md](docs/etapa-04/consulta-avanzada.md) |
 
 Además, [casos-uso.md](docs/etapa-04/casos-uso.md) explica quién usaría cada consulta y qué necesidad resuelve.
+
+### Etapa 5 · Aspectos técnicos de la base de datos
+
+Esta etapa agrega cinco temas sobre la base ya creada y cargada (Etapa 3). Cada tema tiene su propia carpeta en `docs/etapa-05/` con tres cosas: la investigación (definición, ventajas, implementación en SQL Server Express y el caso concreto en La Frecuencia), el script SQL y las capturas de evidencia.
+
+Los scripts se ejecutan después de `crear_bd.sql` y `datos_prueba.sql`. La carpeta de seguridad usa el procedimiento `sp_RegistrarVentaCompleta`, así que hay que correr antes el script de procedimientos y funciones.
+
+| Tema | De qué trata | Investigación | Script | Capturas |
+| :--- | :--- | :--- | :--- | :--- |
+| Índices | Una consulta del informe de ventas probada sin índice, con índice agrupado y con índice de cobertura | [investigacion.md](docs/etapa-05/optimizacion_indices/investigacion.md) | [scripts.sql](docs/etapa-05/optimizacion_indices/scripts.sql) | [evidencias](docs/etapa-05/optimizacion_indices/evidencias) |
+| Procedimientos y funciones | Funciones de total, descuento y reposición, y un procedimiento para registrar una venta | [investigacion.md](docs/etapa-05/procedimientos_funciones/investigacion.md) | [scripts.sql](docs/etapa-05/procedimientos_funciones/scripts.sql) | [evidencias](docs/etapa-05/procedimientos_funciones/evidencias) |
+| Seguridad | Usuarios y roles con distintos permisos | [investigacion.md](docs/etapa-05/seguridad/investigacion.md) | [scripts.sql](docs/etapa-05/seguridad/scripts.sql) | [evidencias](docs/etapa-05/seguridad/evidencias) |
+| Transacciones | Una venta que se confirma (COMMIT) y otra que se cancela por falta de stock (ROLLBACK) | [investigacion.md](docs/etapa-05/transacciones/investigacion.md) | [scripts.sql](docs/etapa-05/transacciones/scripts.sql) | [evidencias](docs/etapa-05/transacciones/evidencias) |
+| Triggers de auditoría | Registro de los cambios de stock de los vinilos y de precio en las ventas | [investigacion.md](docs/etapa-05/triggers_auditoria/investigacion.md) | [scripts.sql](docs/etapa-05/triggers_auditoria/scripts.sql) | [evidencias](docs/etapa-05/triggers_auditoria/evidencias) |
+
 
 ---
 
@@ -109,12 +124,11 @@ docs/
   etapa-02/   DER, modelo relacional y normalización
   etapa-03/   implementación, restricciones y pruebas
   etapa-04/   casos de uso y explicación de las consultas
-  etapa-05/
+  etapa-05/   índices, procedimientos y funciones, seguridad, transacciones y triggers de auditoría, cada tema con su investigación, script y evidencias
 sql/
   ddl/        creación de la base y las tablas
   dml/        datos de prueba
   consultas/  consultas de la Etapa 4 (comprobante, informe y consultas avanzadas)
-  tecnico/    procedimientos, funciones, triggers, transacciones, índices y seguridad (Etapa 5)
 ```
 
 ---
