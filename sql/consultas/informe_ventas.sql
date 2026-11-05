@@ -1,6 +1,9 @@
 USE proyecto_grupo31_secuela;
 GO
 
+DECLARE @desde DATE = '2026-08-01';
+DECLARE @hasta DATE = '2026-10-31';
+
 -- a) Ventas por género
 -- El genero de un vinilo normal esta en Vinilo.id_genero y el de un personalizado en genero_multiple (RN.03), se juntan los dos con union all
 -- Un personalizado con 2 generos suma en cada uno de ellos
@@ -18,7 +21,7 @@ JOIN Detalle_compra dc ON dc.id_compra = c.id_compra
 JOIN vinilo_genero vg ON vg.id_vinilo = dc.id_vinilo
 JOIN genero g ON g.id_genero  = vg.id_genero
 WHERE c.estado_de_compra = 'realizado'
-  AND c.fecha_compra BETWEEN '2026-08-01' AND '2026-10-31'
+  AND c.fecha_compra BETWEEN @desde AND @hasta
 GROUP BY g.nombre_genero
 ORDER BY importe_total DESC;
 
@@ -31,7 +34,7 @@ FROM Compra c
 JOIN Metodo_pago m ON m.id_metodo  = c.id_metodo
 JOIN Detalle_compra dc ON dc.id_compra = c.id_compra
 WHERE c.estado_de_compra = 'realizado'
-  AND c.fecha_compra BETWEEN '2026-08-01' AND '2026-10-31'
+  AND c.fecha_compra BETWEEN @desde AND @hasta
 GROUP BY m.nombre_Metodo_pago
 ORDER BY importe_total DESC;
 GO

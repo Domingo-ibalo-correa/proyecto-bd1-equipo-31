@@ -4,7 +4,9 @@ Equipo 31 - La Frecuencia
 
 Para comprobar que la base quedó bien armada hicimos cuatro tipos de pruebas: revisar los datos cargados, controlar que sean coherentes, intentar cargar datos incorrectos (que la base tiene que rechazar) y probar UPDATE y DELETE que sí tienen que funcionar.
 
-Todas las sentencias están en `sql/dml/datos_prueba.sql`. Las pruebas que tienen que dar error están al final del script, comentadas: se descomentan de a una (en SSMS, seleccionar y usar Ctrl+K, Ctrl+U) y se ejecutan. Las capturas están en la carpeta `casos-de-prueba/`.
+Todas las sentencias están en `sql/dml/datos_prueba.sql`. Las pruebas que tienen que dar error están al final del script, comentadas: se descomentan de a una (en SSMS, seleccionar y usar Ctrl+K, Ctrl+U) y se ejecutan.
+
+En `casos-de-prueba/` quedaron dos capturas (`caso-de-prueba-1.png` y `caso-de-prueba-2.png`) de una corrida anterior de las consultas de verificación del punto 1, con datos de prueba que ya cambiaron. Quedan como referencia de cómo se ve la verificación en SSMS, pero los valores que muestran no coinciden con los datos actuales de `datos_prueba.sql` ni con los resultados de esta página. El resto de los puntos (2, 3 y 4) no tiene captura subida todavía.
 
 Antes de empezar se corre `crear_bd.sql` y después `datos_prueba.sql` sobre una base vacía.
 
@@ -33,8 +35,6 @@ UNION ALL SELECT 'correo_proveedor', COUNT(*) FROM correo_proveedor;
 ```
 
 Resultado esperado: 10 usuarios, 8 métodos de pago, 18 vinilos, 10 géneros, 10 colores, 10 provincias, 10 ciudades, 10 direcciones, 12 compras, 26 renglones de compra, 8 vinilos personalizados, 16 filas en `genero_multiple`, 10 proveedores, 10 ingresos, 32 renglones de ingreso, 12 teléfonos y 12 correos. Todas las tablas tienen 8 registros o más.
-
-Captura: `casos-de-prueba/01-registros-por-tabla.png`
 
 ## 2. Coherencia de los datos
 
@@ -115,8 +115,6 @@ GROUP BY v.id_vinilo, v.titulo_Vinilo;
 ```
 
 Resultado esperado: 8 filas (los vinilos 11 a 18). Cada uno tiene 2 géneros, salvo el vinilo 14, que queda con 1 después del DELETE del punto 4.2 (antes de ese DELETE también tiene 2).
-
-Captura de las pruebas de este punto: `casos-de-prueba/02-coherencia-de-datos.png`
 
 ## 3. Pruebas de restricciones (tienen que dar error)
 
@@ -222,8 +220,6 @@ INSERT INTO Compra (estado_de_compra, fecha_compra, id_usuario, id_metodo) VALUE
 
 Error esperado: Msg 547, `FK_ID_COMPRA_USUARIO`.
 
-Captura: `casos-de-prueba/03-errores-de-carga.png` (se pueden ejecutar las doce juntas y sacar una sola captura de la pestaña de mensajes).
-
 ### 3.2 Borrados que la base no permite
 
 Estas sentencias tienen que fallar por las reglas NO ACTION. Muestran que no se puede perder el historial de compras ni de ingresos.
@@ -252,8 +248,6 @@ DELETE FROM genero WHERE id_genero = 1;
 
 Error esperado: Msg 547, `FK_VINILO_GENERO` o `FK_GENERO_MULTIPLE_GENERO`.
 
-Captura: `casos-de-prueba/04-errores-de-borrado.png`
-
 ## 4. Pruebas que tienen que funcionar
 
 ### 4.1 UPDATE
@@ -280,8 +274,6 @@ SELECT id_vinilo, titulo_Vinilo, stock_actual FROM Vinilo WHERE id_vinilo IN (2,
 
 Resultado esperado: la compra 11 pasa de `pendiente` a `realizado`, el stock del vinilo 2 (Dynamo) baja de 26 a 25 y el del vinilo 17 (Libertango personalizado) baja de 3 a 2.
 
-Captura: `casos-de-prueba/05-updates.png`
-
 ### 4.2 DELETE
 
 Hay seis DELETE en el script, todos con su WHERE y sobre registros que nadie usa, y cada uno informa `(1 fila afectada)`:
@@ -301,8 +293,6 @@ SELECT COUNT(*) AS correos FROM correo_proveedor WHERE id_proveedor = 11;
 ```
 
 Resultado esperado: antes del DELETE da 1 y 1, y después da 0 y 0, aunque nunca borramos esos teléfonos y correos a mano.
-
-Captura: `casos-de-prueba/06-deletes-y-cascade.png`
 
 ## 5. Conclusión
 
