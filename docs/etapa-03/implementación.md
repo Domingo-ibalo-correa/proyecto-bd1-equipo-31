@@ -97,4 +97,4 @@ Para poblar la base nos armamos un set donde cada tabla tiene entre 8 y 10 regis
 
 Todo lo que son consultas de control, pruebas de restricciones y los ejemplos de `UPDATE` / `DELETE` los dejamos explicados con sus respectivas capturas en `pruebas-validacion.md`. 
 
-Si quieren chusmear el diagrama de cómo quedó armada la base, lo exportamos como `DiagramaDDL.png`.
+Si quieren chusmear el diagrama de cómo quedó armada la base, lo exportamos como `diagrama-ddl.png`.
